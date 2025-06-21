@@ -48,6 +48,7 @@ public class DemoqaPage {
     }
     //@Step ("Выбор гендера")
     public DemoqaPage setGender(String value) {
+        submitClick.scrollIntoView(true);
         gender.$(byText(value)).click();
         return this;
     }
@@ -58,6 +59,7 @@ public class DemoqaPage {
     }
     //@Step ("Выбор года, даты и дня рождения в календаре")
     public DemoqaPage setDateOfBirthday(String day, String month, String year) {
+        submitClick.scrollIntoView(true);
         dateOfBirthday.click();
         calendarComponent.setDate(day, month, year);
         return this;
@@ -94,6 +96,7 @@ public class DemoqaPage {
     }
     //@Step ("Нажать на кнопку "Submit"")
     public DemoqaPage submitButton() {
+        submitClick.scrollIntoView(true);
         submitClick.click();
         return this;
     }

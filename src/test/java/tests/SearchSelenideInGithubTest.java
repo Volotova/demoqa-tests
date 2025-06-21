@@ -13,7 +13,8 @@ public class SearchSelenideInGithubTest {
     @DisplayName("Страница Selenide в Github")
     @Tag("Editor Team")
     void searchSoftAssertions(){
-        selenidePage.openPage()
+        selenidePage
+                .openPage()
                 .clickButtonWiki()
                 .checkSoftAssertionsOnPage()
                 .clickSoftAssertions()

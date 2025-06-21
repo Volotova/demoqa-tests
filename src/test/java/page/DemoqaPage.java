@@ -1,6 +1,7 @@
 package page;
 
 import com.codeborne.selenide.SelenideElement;
+import page.components.CalendarComponent;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
@@ -10,17 +11,20 @@ public class DemoqaPage {
     private SelenideElement firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
             emailInput = $("#userEmail"),
-            gender = $("#gender-radio-1"),
+            gender = $("#genterWrapper"),
             userNumberInput = $("#userNumber"),
             dateOfBirthday = $("#dateOfBirthInput"),
             subjectsInput = $("#subjectsInput"),
-            hobbiesInput = $("#hobbies-checkbox-1"),
+            hobbiesInput = $("#hobbiesWrapper"),
             uploadPicture = $("#uploadPicture"),
             currentAddress = $("#currentAddress"),
             state = $("#state input"),
             city = $("#city input"),
-            submitButton = $("#submit"),
+            submitClick = $("#submit"),
             modal = $("#example-modal-sizes-title-lg");
+
+
+    CalendarComponent calendarComponent = new CalendarComponent();
 
     //@Step ("Открытие страницы")
     public DemoqaPage openPage(){
@@ -43,8 +47,8 @@ public class DemoqaPage {
         return this;
     }
     //@Step ("Выбор гендера")
-    public DemoqaPage setGender() {
-        gender.parent().click();
+    public DemoqaPage setGender(String value) {
+        gender.$(byText(value)).click();
         return this;
     }
     //@Step ("Ввод номера телефона")
@@ -53,13 +57,9 @@ public class DemoqaPage {
         return this;
     }
     //@Step ("Выбор года, даты и дня рождения в календаре")
-    public DemoqaPage setDateOfBirthday() {
+    public DemoqaPage setDateOfBirthday(String day, String month, String year) {
         dateOfBirthday.click();
-        $(".react-datepicker__year-select").selectOption("1995");
-        $(".react-datepicker__month-select").selectOption(8);
-        $$(".react-datepicker__day:not(.react-datepicker__day--outside-month)")
-                .findBy(text("19"))
-                .click();
+        calendarComponent.setDate(day, month, year);
         return this;
     }
     //@Step ("Выбор предмета")
@@ -68,8 +68,8 @@ public class DemoqaPage {
         return this;
     }
     //@Step ("Выбор хобби")
-    public DemoqaPage setHobbies() {
-        hobbiesInput.parent().click();
+    public DemoqaPage setHobbies(String value) {
+        hobbiesInput.$(byText(value)).click();
         return this;
     }
     //@Step ("Загрузка файла")
@@ -93,8 +93,8 @@ public class DemoqaPage {
         return this;
     }
     //@Step ("Нажать на кнопку "Submit"")
-    public DemoqaPage setSubmitButton() {
-        submitButton.click();
+    public DemoqaPage submitButton() {
+        submitClick.click();
         return this;
     }
     //@Step ("Проверка открылась ли модалка после заполнения и отправки формы")

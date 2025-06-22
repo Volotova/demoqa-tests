@@ -44,6 +44,7 @@ compileTestJava {
 }
 
 dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     testImplementation(
             'io.rest-assured:rest-assured:5.3.1',
             'io.rest-assured:json-schema-validator:5.4.0',

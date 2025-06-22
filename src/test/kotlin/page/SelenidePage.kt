@@ -1,19 +1,20 @@
 package page
 
-import com.codeborne.selenide.Selenide
+import com.codeborne.selenide.Selenide.`$`
 import com.codeborne.selenide.SelenideElement
 import com.codeborne.selenide.Condition
+import com.codeborne.selenide.Selenide.open
 import io.qameta.allure.Step
 
 class SelenidePagekt {
-    private val wiki: SelenideElement = Selenide.`$`("#wiki-tab")
-    private val wikiBody: SelenideElement = Selenide.`$`("#wiki-body")
-    private val softAssertions: SelenideElement = Selenide.`$`("a[href='/selenide/selenide/wiki/SoftAssertions']")
-    private val jUnit5: SelenideElement = Selenide.`$`("#user-content-3-using-junit5-extend-test-class")
+    private val wiki: SelenideElement = `$`("#wiki-tab")
+    private val wikiBody: SelenideElement = `$`("#wiki-body")
+    private val softAssertions: SelenideElement = `$`("a[href='/selenide/selenide/wiki/SoftAssertions']")
+    private val jUnit5: SelenideElement = `$`("#user-content-3-using-junit5-extend-test-class")
 
     @Step("Открытие страницы")
     fun openPage(): SelenidePagekt {
-        Selenide.open("https://github.com/selenide/selenide")
+        open("https://github.com/selenide/selenide")
         return this
     }
 
